@@ -1,0 +1,5 @@
+main: me.snowman.itemmultiply.ItemMultiply
+name: ItemMultiply
+author: SnowmanFTW
+version: ${project.version}
+api-version: 1.15
