@@ -3,3 +3,9 @@ name: ItemMultiply
 author: SnowmanFTW
 version: ${project.version}
 api-version: 1.15
+
+commands:
+  itemmultiply:
+    description: Main command for the plugin
+    usage: /<command>
+    aliases: [im]

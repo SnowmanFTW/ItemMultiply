@@ -12,11 +12,44 @@ import java.util.UUID;
 
 public class ConfigManager {
     private final PluginManager pluginManager = ItemMultiply.pluginManager;
+    private final MessageManager messageManager = ItemMultiply.messageManager;
     private final ItemMultiply plugin = pluginManager.getPlugin();
     private File folderData = new File(plugin.getDataFolder(), "data" + File.separator);
-    private File playerFile;
-    private FileConfiguration playerCfg;
+    private File playerFile, messagesFile;
+    private FileConfiguration playerCfg, messagesCfg;
 
+    public void setupMessages() {
+        if (!plugin.getDataFolder().exists()) {
+            plugin.getDataFolder().mkdir();
+        }
+
+        messagesFile = new File(plugin.getDataFolder(), "messages.yml");
+        if (!messagesFile.exists()) {
+            plugin.saveResource("messages.yml", true);
+            messagesCfg = YamlConfiguration.loadConfiguration(messagesFile);
+            Bukkit.getServer().getConsoleSender().sendMessage(messageManager.color("&aMessages file created successfully."));
+        }
+        if (messagesCfg == null) {
+            messagesCfg = YamlConfiguration.loadConfiguration(messagesFile);
+        }
+    }
+
+    public FileConfiguration getMessages() {
+        return messagesCfg;
+    }
+
+    public void saveMessages() {
+        try {
+            messagesCfg.save(messagesFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void reloadMessages() {
+        messagesFile = new File(plugin.getDataFolder(), "messages.yml");
+        messagesCfg = YamlConfiguration.loadConfiguration(messagesFile);
+    }
 
     public void setupPlayer(UUID uuid) {
         String name = Bukkit.getPlayer(uuid).getName();

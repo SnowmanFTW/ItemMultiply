@@ -1,0 +1,14 @@
+Prefix: "&a&lItem&f&lMultiply &7- &r"
+Help:
+  - "&a&m----&f&l Item Multiply Help &a&m----"
+  - "&a/%command% help &7- &fDisplays this"
+  - "&a/%command% <player> [page_number] &7- Displays info about a player"
+  - "&a/%command% reload &7- &fReloads the plugin"
+Reload: "&aPlugin reloaded successfully!"
+PlayerInfoHeader: "&a&m----&f&l %player%'s stats &a&m----"
+PlayerInfo:
+  - "&f&l%stat%"
+  - "&aXP: &f%xp%/%needed_xp%"
+  - "&aLevel: %level%"
+PlayerInfoFooter: "&a&m----&f&l /%command% %player% %page% &a&m----"
+NoPermission: "&aYou don't have permission to use this command."

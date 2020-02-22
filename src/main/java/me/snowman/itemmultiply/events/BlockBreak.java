@@ -3,7 +3,6 @@ package me.snowman.itemmultiply.events;
 import me.snowman.itemmultiply.ItemMultiply;
 import me.snowman.itemmultiply.managers.ItemManager;
 import me.snowman.itemmultiply.managers.MessageManager;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +16,8 @@ public class BlockBreak implements Listener {
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        Material material = event.getBlock().getType();
+        if (!player.hasPermission("itemmultiply.use")) return;
+        String material = event.getBlock().getType().name();
         int timesDropped = 1;
 
         if (itemManager.getXP(player, material) == null) {
@@ -50,10 +50,8 @@ public class BlockBreak implements Listener {
             player.sendMessage(messageManager.color("&aLEVEL UP! Level: &f" + itemManager.getLevel(player, material)));
             return;
         }
+        String actionBar = "&aLevel: " + level + " &f[" + itemManager.getProgressBar(xp, (int) nextLevel, 40, '|', "&a", "&7") + "&f] " + "&a" + percentage + "%";
 
-        player.sendMessage(messageManager.color("&aXP: &f" + xp + "&a/&f" + (int) nextLevel));
-        player.sendMessage(messageManager.color("&aLevel: &f" + level));
-        player.sendMessage(messageManager.color("&aProgress: &f[" + itemManager.getProgressBar(xp, (int) nextLevel, 40, '|', "&a", "&7") + "&f]"));
-        player.sendMessage(messageManager.color("&aPercentage: &f" + percentage + "%"));
+        messageManager.sendActionBar(player, actionBar);
     }
 }

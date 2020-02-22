@@ -1,5 +1,6 @@
-package me.snowman.itemmultiply;
+package me.snowman.itemmultiply.events;
 
+import me.snowman.itemmultiply.ItemMultiply;
 import me.snowman.itemmultiply.managers.ConfigManager;
 import me.snowman.itemmultiply.managers.SaveManager;
 import org.bukkit.entity.Player;
@@ -14,6 +15,7 @@ public class PlayerJoin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        if (!player.hasPermission("itemmultiply.use")) return;
         configManager.setupPlayer(player.getUniqueId());
         saveManager.loadPlayer(player);
     }

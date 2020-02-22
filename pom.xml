@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>ItemMultiply</artifactId>
-    <version>1.0.0 ALPHA</version>
+    <version>1.0.0 BETA 1</version>
 
     <repositories>
         <repository>

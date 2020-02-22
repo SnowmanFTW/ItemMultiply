@@ -9,11 +9,14 @@ public class ItemMultiply extends JavaPlugin {
     public static MessageManager messageManager;
     public static ConfigManager configManager;
     public static SaveManager saveManager;
+    public static StatsManager statsManager;
 
     public void onEnable() {
         loadManagers();
         pluginManager.loadEvents();
+        pluginManager.loadCommands();
         configManager.setupConfig();
+        configManager.setupMessages();
         saveManager.loadOnlinePlayers();
     }
 
@@ -27,5 +30,6 @@ public class ItemMultiply extends JavaPlugin {
         pluginManager = new PluginManager();
         configManager = new ConfigManager();
         saveManager = new SaveManager();
+        statsManager = new StatsManager();
     }
 }
