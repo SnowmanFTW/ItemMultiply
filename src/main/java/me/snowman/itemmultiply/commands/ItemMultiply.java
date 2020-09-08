@@ -42,7 +42,9 @@ public class ItemMultiply implements CommandExecutor {
                 }
                 break;
             case "reload":
-                sender.sendMessage(messageManager.color(configManager.getMessages().getString("Prefix") + configManager.getMessages().getString("Reload")));
+                configManager.reloadConfig();
+                configManager.reloadMessages();
+                sender.sendMessage(messageManager.color(messageManager.getPrefix() + configManager.getMessages().getString("Reload")));
                 break;
         }
         return true;

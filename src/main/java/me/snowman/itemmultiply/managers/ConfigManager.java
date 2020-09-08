@@ -12,7 +12,6 @@ import java.util.UUID;
 
 public class ConfigManager {
     private final PluginManager pluginManager = ItemMultiply.pluginManager;
-    private final MessageManager messageManager = ItemMultiply.messageManager;
     private final ItemMultiply plugin = pluginManager.getPlugin();
     private File folderData = new File(plugin.getDataFolder(), "data" + File.separator);
     private File playerFile, messagesFile;
@@ -27,7 +26,7 @@ public class ConfigManager {
         if (!messagesFile.exists()) {
             plugin.saveResource("messages.yml", true);
             messagesCfg = YamlConfiguration.loadConfiguration(messagesFile);
-            Bukkit.getServer().getConsoleSender().sendMessage(messageManager.color("&aMessages file created successfully."));
+            Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&aMessages file created successfully."));
         }
         if (messagesCfg == null) {
             messagesCfg = YamlConfiguration.loadConfiguration(messagesFile);

@@ -6,8 +6,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ItemMultiply extends JavaPlugin {
     public static ItemManager itemManager;
     public static PluginManager pluginManager;
-    public static MessageManager messageManager;
     public static ConfigManager configManager;
+    public static MessageManager messageManager;
     public static SaveManager saveManager;
     public static StatsManager statsManager;
 
@@ -25,10 +25,10 @@ public class ItemMultiply extends JavaPlugin {
     }
 
     private void loadManagers() {
-        messageManager = new MessageManager();
-        itemManager = new ItemManager();
         pluginManager = new PluginManager();
         configManager = new ConfigManager();
+        messageManager = new MessageManager();
+        itemManager = new ItemManager();
         saveManager = new SaveManager();
         statsManager = new StatsManager();
     }

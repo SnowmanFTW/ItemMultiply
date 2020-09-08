@@ -9,6 +9,7 @@ import java.util.UUID;
 
 public class ItemManager {
     private final MessageManager messageManager = ItemMultiply.messageManager;
+    private final ConfigManager configManager = ItemMultiply.configManager;
     private HashMap<UUID, HashMap<String, Integer>> xp = new HashMap<>();
     private HashMap<UUID, HashMap<String, Integer>> level = new HashMap<>();
 
@@ -84,8 +85,8 @@ public class ItemManager {
     }
 
     public double nextLevel(Player player, String string) {
-        double exponent = 2.5;
-        double baseXP = 50;
+        double exponent = configManager.getConfig().getDouble("Exponent");
+        double baseXP = configManager.getConfig().getDouble("BaseXP");
         double level = getLevel(player, string) + 1;
         return Math.floor(baseXP * (Math.pow(level, exponent)));
     }
